@@ -1,0 +1,28 @@
+{
+  "name": "sync_node",
+  "version": "1.0.0",
+  "description": "node js service of reilio sync web",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "nodemon -r esm index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llorz-o/sync_node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llorz-o/sync_node/issues"
+  },
+  "homepage": "https://github.com/llorz-o/sync_node#readme",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "fastify": "^4.12.0",
+    "file-type": "^18.2.0",
+    "fs-extra": "^11.1.0"
+  }
+}
