@@ -18,14 +18,7 @@ const fastify = Fastify({
     logger: true
 })
 await fastify.register(cors, {
-    origin: [
-        'http://localhost',
-        'http://127.0.0.1:5173',
-        'https://sync.infinityweb.info',
-        'http://sync.infinityweb.info/',
-        'http://sync.infinityweb.info',
-        'sync.infinityweb.info'
-    ]
+    origin: "*"
 })
 // 变量
 const isWin = process.platform.startsWith('win')
