@@ -22,6 +22,7 @@ await fastify.register(cors, {
         'http://localhost',
         'http://127.0.0.1:5173',
         'https://sync.infinityweb.info',
+        'http://sync.infinityweb.info/'
     ]
 })
 // 变量
