@@ -105,7 +105,7 @@ setInterval(() => {
 
 setTimeout(() => {
     // Run the server!
-    fastify.listen({port: 3000}, (err, address) => {
+    fastify.listen({port: 3000, host: "0.0.0.0"}, (err, address) => {
         if (err) return handErr(err)
         // Server is now listening on ${address}
     })
