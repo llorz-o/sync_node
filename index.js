@@ -26,7 +26,7 @@ await fastify.register(cors, {
 })
 // 变量
 const isWin = process.platform.startsWith('win')
-const dir = isWin ? 'C:\\Users\\17517\\OneDrive\\图片' : '~/home/joe'
+const dir = isWin ? 'C:\\Users\\17517\\OneDrive\\图片' : '/home/joe'
 // 错误捕获
 const handErr = err => console.error(err)
 const resolvePath = (_path, file) => path.resolve(_path, file)
