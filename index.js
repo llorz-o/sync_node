@@ -91,7 +91,7 @@ readDir(dir, true)
 
 
 // Declare a route
-fastify.get('/api/', (request, reply) => {
+fastify.get('/', (request, reply) => {
     console.log(cache)
     reply.send(cache)
 })
