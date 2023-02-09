@@ -58,10 +58,9 @@ const readDir = (_dir, isRoot) => {
                 if (err) return handErr(err)
                 // 是文件
                 if (file.startsWith('.')) return console.log(`忽略隐藏文件夹::${file}`)
-                cache[dirName] = (cache[dirName] || [])
-                console.log(cache[dirName] ? cache[dirName].length : cache[dirName], dirName)
                 if (stat.isFile()) {
                     const memo = await fileType.fileTypeFromFile(filePath)
+                    cache[dirName] = (cache[dirName] || [])
                     cache[dirName].push({
                         fileName: file,
                         hash,
@@ -70,6 +69,7 @@ const readDir = (_dir, isRoot) => {
                         memo
                     })
                 } else if (stat.isDirectory()) {
+                    cache[dirName] = (cache[dirName] || [])
                     cache[dirName].push({
                         fileName: file,
                         hash,
@@ -97,7 +97,7 @@ fastify.get('/', (request, reply) => {
 setInterval(() => {
     cache = createCache()
     readDir(dir, true)
-}, 10 * 1000)
+}, 5*60 * 1000)
 
 setTimeout(() => {
     // Run the server!
