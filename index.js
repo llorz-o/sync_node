@@ -58,7 +58,8 @@ const readDir = (_dir, isRoot) => {
                 if (err) return handErr(err)
                 // 是文件
                 if (file.startsWith('.')) return console.log(`忽略隐藏文件夹::${file}`)
-                cache[dirName] = cache[dirName] || []
+                cache[dirName] = (cache[dirName] || [])
+                console.log(cache[dirName] ? cache[dirName].length : cache[dirName], dirName)
                 if (stat.isFile()) {
                     const memo = await fileType.fileTypeFromFile(filePath)
                     cache[dirName].push({
