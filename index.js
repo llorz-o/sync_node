@@ -68,6 +68,7 @@ const readDir = (_dir, isRoot) => {
                         memo
                     })
                 } else if (stat.isDirectory()) {
+                    if (file.startsWith('.')) return
                     cache[dirName].push({
                         fileName: file,
                         hash,
