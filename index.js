@@ -57,9 +57,9 @@ const readDir = (_dir, isRoot) => {
             fs.lstat(filePath, async (err, stat) => {
                 if (err) return handErr(err)
                 // 是文件
-                cache[dirName] = cache[dirName] || []
                 if (stat.isFile()) {
                     const memo = await fileType.fileTypeFromFile(filePath)
+                    cache[dirName] = cache[dirName] || []
                     cache[dirName].push({
                         fileName: file,
                         hash,
@@ -69,6 +69,7 @@ const readDir = (_dir, isRoot) => {
                     })
                 } else if (stat.isDirectory()) {
                     if (file.startsWith('.')) return
+                    cache[dirName] = cache[dirName] || []
                     cache[dirName].push({
                         fileName: file,
                         hash,
