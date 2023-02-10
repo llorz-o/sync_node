@@ -43,14 +43,27 @@ const captureFile = (_fileName) => {
 
 const captur01 = captureFile('01')
 
-const readDir = (_dir, isRoot) => {
+const readDir = (_dir, isRoot, _backHash) => {
+    const dirHash = md5(_dir)
+    if (!isRoot) {
+        const dirName = dirHash
+        const paths = _dir.replace(dir, '').replace(backslash, '/').split('/')
+        paths.pop()
+        cache[dirName] = (cache[dirName] || [])
+        cache[dirName].push({
+            fileName: '..',
+            hash: _backHash,
+            relativePath: paths.join('/'),
+            isBack: true,
+        })
+    }
     fs.readdir(_dir, (err, dirs) => {
         if (err) return handErr(err)
         dirs.forEach((file) => {
             const filePath = resolvePath(_dir, file)
             const relativePath = filePath.replace(dir, '').replace(backslash, '/')
             const hash = md5(filePath)
-            const dirHash = md5(_dir)
+            const backDirHash = md5(_dir)
             const dirName = isRoot ? 'dirs' : dirHash
             hashMapPath[hash] = filePath
 
@@ -76,7 +89,7 @@ const readDir = (_dir, isRoot) => {
                         relativePath,
                         isDir: true,
                     })
-                    readDir(filePath)
+                    readDir(filePath, false, backDirHash)
                 } else {
                     console.log('类型错误:', file)
                 }
@@ -86,7 +99,7 @@ const readDir = (_dir, isRoot) => {
     })
 }
 
-readDir(dir, true)
+readDir(dir, true, 'dirs')
 
 
 // Declare a route
@@ -97,7 +110,7 @@ fastify.get('/', (request, reply) => {
 setInterval(() => {
     cache = createCache()
     readDir(dir, true)
-}, 10*60 * 1000)
+}, 10 * 60 * 1000)
 
 setTimeout(() => {
     // Run the server!
