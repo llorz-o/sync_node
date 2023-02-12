@@ -104,7 +104,12 @@ readDir(dir, true, 'dirs')
 
 // Declare a route
 fastify.get('/', (request, reply) => {
-    reply.send(cache)
+    const {hash} = request.query
+    if (hash) {
+        reply.send({hash: hash, value: cache[hash]})
+    } else {
+        reply.send({...createCache(),dirs:cache.dirs})
+    }
 })
 
 setInterval(() => {
