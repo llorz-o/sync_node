@@ -6,6 +6,7 @@ import fs from 'fs'
 import path from 'path'
 import cors from '@fastify/cors'
 import md5 from 'md5'
+import {filesize} from "filesize";
 
 console.log(`
 这个服务是用于获取本地静态文件夹结构数据，从而传输给前端 sync_web 服务
@@ -79,7 +80,8 @@ const readDir = (_dir, isRoot, _backHash) => {
                         hash,
                         relativePath,
                         isFile: true,
-                        memo
+                        memo,
+                        size: filesize(stat.size)
                     })
                 } else if (stat.isDirectory()) {
                     cache[dirName] = (cache[dirName] || [])
@@ -108,7 +110,7 @@ fastify.get('/', (request, reply) => {
     if (hash) {
         reply.send({hash: hash, value: cache[hash]})
     } else {
-        reply.send({...createCache(),dirs:cache.dirs})
+        reply.send({...createCache(), dirs: cache.dirs})
     }
 })
 
