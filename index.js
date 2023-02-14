@@ -117,7 +117,7 @@ fastify.get('/', (request, reply) => {
 setInterval(() => {
     cache = createCache()
     readDir(dir, true)
-}, 10 * 60 * 1000)
+}, 5 * 60 * 1000)
 
 setTimeout(() => {
     // Run the server!
