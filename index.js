@@ -28,7 +28,7 @@ const dir = isWin ? 'C:\\Users\\17517\\OneDrive\\图片' : '/home/resilio_sync'
 const handErr = err => console.error(err)
 const resolvePath = (_path, file) => path.resolve(_path, file)
 // 缓存
-const createCache = () => ({staticURL: isWin ? 'http://localhost:3002/' : 'http://infinityweb.info:8001/'})
+const createCache = () => ({staticURL: isWin ? 'http://localhost:3002/' : 'https://infinityweb.info:8001/'})
 let cache = {...createCache()}
 const hashMapPath = {}
 
