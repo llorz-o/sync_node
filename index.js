@@ -23,7 +23,7 @@ await fastify.register(cors, {
 })
 // 变量
 const isWin = process.platform.startsWith('win')
-const dir = isWin ? 'C:\\Users\\17517\\OneDrive\\图片' : '/home/resilio_sync'
+const dir = isWin ? 'C:\\Users\\17517\\OneDrive\\图片' : '/root/resilio'
 // 错误捕获
 const handErr = err => console.error(err)
 const resolvePath = (_path, file) => path.resolve(_path, file)
