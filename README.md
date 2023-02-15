@@ -60,7 +60,7 @@ npm install http-server -g
 npm install pm2 -g
 ```
 
-## sync_node
+## sync_nodes
 
 ```bash
 cd ~
@@ -68,7 +68,7 @@ mkdir work
 cd work
 git clone https://github.com/llorz-o/sync_node.git
 cd sync_node/bootstrap
-mv launch.sh git_pull_sync_node.sh unzip_sync.infinityweb.info.sh ~
+cp launch.sh git_pull_sync_node.sh unzip_sync.infinityweb.info.sh ~
 ```
 
 ## 修改nginx配置
