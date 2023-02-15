@@ -1,2 +1,2 @@
-cd /home/joe/web/infinityweb.info/public_html || exit
+cd /home/joe/web/sync.infinityweb.info/public_html || exit
 unzip assets.zip

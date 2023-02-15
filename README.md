@@ -20,12 +20,6 @@ docker pull nimmis/resilio-sync
 docker run -d -v /root/resilio:/data -e RSLSYNC_USER=joe -e RSLSYNC_PASS=zlc725361 --name sync -p 8888:8888 -p 33333:33333 nimmis/resilio-sync
 ```
 
-修改nginx配置
-
-```bash
-cd /etc/nginx/conf.d/domains
-```
-
 ## 安装 nvm
 
 [readme NVM](https://github.com/nvm-sh/nvm#installing-and-updating)
@@ -73,7 +67,22 @@ cd ~
 mkdir work
 cd work
 git clone https://github.com/llorz-o/sync_node.git
-cd sync_node
+cd sync_node/bootstrap
 mv launch.sh git_pull_sync_node.sh unzip_sync.infinityweb.info.sh ~
 ```
 
+## 修改nginx配置
+
+```bash
+cd /etc/nginx/conf.d/domains
+cat /root/work/sync_node/bootstrap/sync.infinityweb.info.conf >> sync.infinityweb.info.conf
+cat /root/work/sync_node/bootstrap/sync.infinityweb.info.ssl.conf >> sync.infinityweb.info.ssl.conf
+```
+
+## 启动服务
+
+上传页面静态文件并执行`sh ~/unzip_sync.infinityweb.info.sh`
+
+```bash
+sh ~/launch.sh
+```
