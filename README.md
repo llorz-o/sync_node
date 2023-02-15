@@ -68,7 +68,7 @@ mkdir work
 cd work
 git clone https://github.com/llorz-o/sync_node.git
 cd sync_node/bootstrap
-cp launch.sh git_pull_sync_node.sh unzip_sync.infinityweb.info.sh ~
+cp -rf launch.sh git_pull_sync_node.sh unzip_sync.infinityweb.info.sh ~
 ```
 
 ## 修改nginx配置
